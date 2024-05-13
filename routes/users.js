@@ -98,6 +98,7 @@ router.post('/changepassword', async (req, res) => {
       // Mettez à jour le mot de passe dans la base de données
       const hashedPassword = await bcrypt.hash(newPassword, 10); // Hachage du nouveau mot de passe
       user.password = hashedPassword;
+      console.log(hashedPassword);
       await user.save();
 
       res.status(200).json({ message: 'Password changed successfully' });
